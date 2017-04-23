@@ -1,0 +1,12 @@
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\appsettings.json
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrackMigrateDB.deps.json
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrackMigrateDB.runtimeconfig.json
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrackMigrateDB.runtimeconfig.dev.json
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrackMigrateDB.dll
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrackMigrateDB.pdb
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrack.dll
+E:\projsT\core\SignTrack\SignTrackMigrateDB\bin\Release\netcoreapp1.1\SignTrack.pdb
+E:\projsT\core\SignTrack\SignTrackMigrateDB\obj\Release\netcoreapp1.1\SignTrackMigrateDB.csprojResolveAssemblyReference.cache
+E:\projsT\core\SignTrack\SignTrackMigrateDB\obj\Release\netcoreapp1.1\SignTrackMigrateDB.AssemblyInfo.cs
+E:\projsT\core\SignTrack\SignTrackMigrateDB\obj\Release\netcoreapp1.1\SignTrackMigrateDB.dll
+E:\projsT\core\SignTrack\SignTrackMigrateDB\obj\Release\netcoreapp1.1\SignTrackMigrateDB.pdb

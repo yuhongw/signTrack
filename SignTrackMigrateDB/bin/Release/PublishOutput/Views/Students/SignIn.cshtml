@@ -1,0 +1,50 @@
+﻿@model SignTrack.Models.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignIn</title>
+</head>
+<body>
+    <span>签到</span>
+    <form asp-action="SignIn">
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div>
+            <label asp-for="StuNo"></label>
+            <div>
+                <input asp-for="StuNo" />
+                <span asp-validation-for="StuNo"></span>
+            </div>
+        </div>
+        
+
+        <div>
+            <label asp-for="Name"></label>
+            <div>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+
+        <div>
+            <label asp-for="Phone"></label>
+            <div>
+                <input asp-for="Phone" />
+                <span asp-validation-for="Phone"></span>
+            </div>
+        </div>
+
+
+        <div>
+            <input type="submit" value="Sign In" />
+        </div>
+    </form>
+</body>
+</html>

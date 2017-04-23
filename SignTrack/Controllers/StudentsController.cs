@@ -44,6 +44,7 @@ namespace SignTrack.Controllers
             return View(student);
         }
 
+        /*
         // GET: Students/Create
         public IActionResult Create()
         {
@@ -151,16 +152,17 @@ namespace SignTrack.Controllers
             return _context.Students.Any(e => e.Id == id);
         }
 
+        */
 
-        public async Task<IActionResult> SignIn()
+        public IActionResult SignIn()
         {
             return View();
         }
-
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignIn([Bind("Name,Phone,PhoneId,StuNo")] Student stu)
+        public IActionResult SignIn([Bind("Name,Phone,PhoneId,StuNo")] Student stu)
         {
             var query = StudentService.QGetByExample(_context, stu);
             Student stuQ = query.FirstOrDefault();
@@ -176,7 +178,7 @@ namespace SignTrack.Controllers
             {
                 var query2 = _context.Students
                             .Where(x => x.Phone == stu.Phone || x.StuNo == stu.StuNo);
-                if (query.Count() > 0)
+                if (query2.Count() > 0)
                 {
                     return View("Mismatch");
                 }

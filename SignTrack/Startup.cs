@@ -33,8 +33,9 @@ namespace SignTrack
             // Add framework services.
             services.AddMvc();
             services.AddDbContext<SignContext>(o => o.UseMySQL(Configuration.GetConnectionString("SignContext")));
-            
         }
+
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -58,7 +59,7 @@ namespace SignTrack
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "yu/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
