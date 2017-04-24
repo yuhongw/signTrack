@@ -18,7 +18,6 @@
     },
     "SignTrack": {
       "commandName": "Project",
-      "commandLineArgs": "migrate cnnstring",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

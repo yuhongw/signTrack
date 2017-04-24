@@ -2,9 +2,7 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -12,7 +10,7 @@
     <title>SignIn</title>
 </head>
 <body>
-    <span>签到</span>
+    <span>---签到---</span>
     <form asp-action="SignIn">
         <div asp-validation-summary="ModelOnly"></div>
 
@@ -33,18 +31,23 @@
             </div>
         </div>
 
+
         <div>
-            <label asp-for="Phone"></label>
             <div>
-                <input asp-for="Phone" />
+                <input type="hidden" id="input_phone" asp-for="Phone" />
                 <span asp-validation-for="Phone"></span>
             </div>
         </div>
 
-
         <div>
-            <input type="submit" value="Sign In" />
+            <input type="submit" value="确认签到" />
         </div>
     </form>
 </body>
 </html>
+<script>
+    function setPhone(phone)
+    {
+        document.getElementById("input_phone").value = phone;
+    }
+</script>
