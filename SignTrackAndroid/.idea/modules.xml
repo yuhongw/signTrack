@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SignTrack.iml" filepath="$PROJECT_DIR$/SignTrack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SignTrackAndroid.iml" filepath="$PROJECT_DIR$/SignTrackAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
