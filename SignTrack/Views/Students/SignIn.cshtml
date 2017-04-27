@@ -8,29 +8,55 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width" />
     <title>SignIn</title>
+    <style>
+        .signinLabel {
+            width: 20%;
+            display: block;
+        }
+        .signinInput {
+            width:70%;
+            display:block;
+        }
+
+        .hundred {
+            width:100%;
+        }
+        .header {
+            
+            background-color:aliceblue;
+        }
+        .height10 {
+            height:10px;
+        }
+        .height10 {
+            height: 5px;
+        }
+    </style>
 </head>
 <body>
-    <span>---签到---</span>
+    <div  class="header" >签到</div>
+    <div class="height10"></div>
     <form asp-action="SignIn">
         <div asp-validation-summary="ModelOnly"></div>
-
         <div>
-            <label asp-for="StuNo"></label>
-            <div>
-                <input asp-for="StuNo" />
-                <span asp-validation-for="StuNo"></span>
-            </div>
+        <table class="hundred">
+            <tr>
+                <td style="width:50px;"><label asp-for="StuNo"></label></td>
+                <td><input asp-for="StuNo" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"> <span asp-validation-for="StuNo"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Name"></label></td>
+                <td><input asp-for="Name"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"> <span asp-validation-for="Name"></span>
+                </td>
+            </tr>
+        </table>
         </div>
-        
-
-        <div>
-            <label asp-for="Name"></label>
-            <div>
-                <input asp-for="Name" />
-                <span asp-validation-for="Name"></span>
-            </div>
-        </div>
-
 
         <div>
             <div>
@@ -38,11 +64,12 @@
                 <span asp-validation-for="Phone"></span>
             </div>
         </div>
-
+        <div class="height5"></div>
         <div>
             <input type="submit" value="确认签到" />
         </div>
     </form>
+    
 </body>
 </html>
 <script>
