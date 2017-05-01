@@ -162,17 +162,29 @@ namespace SignTrack.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SignIn([Bind("Name,Phone,PhoneId,StuNo")] Student stu)
+        public IActionResult SignIn([Bind("Name,Phone,PhoneId,StuNo")] Student stu,[Bind("reqType")] string reqType)
         {
             var query = StudentService.QGetByExample(_context, stu);
             Student stuQ = query.FirstOrDefault();
 
-            //Add a signin record
+            
             if (stuQ != null)
             {
-                stuQ.SignIns.Add(new Models.SignIn { Sign = DateTime.Now });
-                _context.SaveChanges();
-                return View("SignInResult");
+                if (reqType == "history")
+                {
+                    return RedirectToAction("History", stuQ);
+                }
+                else if (reqType == "absence")
+                {
+                    return RedirectToAction("Absence", stuQ);
+                }
+                else
+                {
+                    //Add a signin record
+                    stuQ.SignIns.Add(new Models.SignIn { Sign = DateTime.Now });
+                    _context.SaveChanges();
+                    return View("SignInResult");
+                }
             }
             else
             {
@@ -195,6 +207,8 @@ namespace SignTrack.Controllers
                 }
             }
 
+            
+
             /*
             if (ModelState.IsValid)
             {
@@ -204,6 +218,21 @@ namespace SignTrack.Controllers
             }
             return View(student);
             */
+        }
+
+        public IActionResult History(Student stu)
+        {
+            ViewBag.stu = stu;
+            _context.Entry(stu).Reload();
+            _context.Entry(stu).Collection(x => x.SignIns).Load();
+            //var stuQ = _context.Students.Include("SignIns").Where(x => x.Id == stu.Id).SingleOrDefault();
+            return View( stu.SignIns.ToList());
+        }
+
+        public IActionResult Absence(Student stu)
+        {
+            ViewBag.stu = stu;
+            return View(new List<DateTime>());
         }
     }
 }

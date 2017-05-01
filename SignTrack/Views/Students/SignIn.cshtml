@@ -8,30 +8,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width" />
     <title>SignIn</title>
-    <style>
-        .signinLabel {
-            width: 20%;
-            display: block;
-        }
-        .signinInput {
-            width:70%;
-            display:block;
-        }
-
-        .hundred {
-            width:100%;
-        }
-        .header {
-            
-            background-color:aliceblue;
-        }
-        .height10 {
-            height:10px;
-        }
-        .height10 {
-            height: 5px;
-        }
-    </style>
+    <link href="~/yu/main.css" rel="stylesheet" />
 </head>
 <body>
     <div  class="header" >签到</div>
@@ -41,14 +18,14 @@
         <div>
         <table class="hundred">
             <tr>
-                <td style="width:50px;"><label asp-for="StuNo"></label></td>
+                <td style="width:30px;"><img src="~/yu/images/userid.png" /></td>
                 <td><input asp-for="StuNo" /></td>
             </tr>
             <tr>
                 <td colspan="2"> <span asp-validation-for="StuNo"></span></td>
             </tr>
             <tr>
-                <td><label asp-for="Name"></label></td>
+                <td><img src="~/yu/images/pwd.png" /></td>
                 <td><input asp-for="Name"/></td>
             </tr>
             <tr>
@@ -61,20 +38,30 @@
         <div>
             <div>
                 <input type="hidden" id="input_phone" asp-for="Phone" />
+                <input type="hidden" id="reqType" name="reqType" />
                 <span asp-validation-for="Phone"></span>
             </div>
         </div>
         <div class="height5"></div>
         <div>
-            <input type="submit" value="确认签到" />
+            <ul>
+                <li><input type="submit" value="确认签到" onclick="setReqType('confirm')"/></li>
+                <li><input type="submit" value="历史记录" onclick="setReqType('history')" /></li>
+                <li><input type="submit" value="缺席查询" onclick="setReqType('absence')" /></li>
+                <li><input type="button" value="测试" onclick="setPhone('112233')" /></li> 
+            </ul>
+            
         </div>
     </form>
-    
 </body>
 </html>
 <script>
     function setPhone(phone)
     {
         document.getElementById("input_phone").value = phone;
+    }
+    function setReqType(t)
+    { 
+        document.getElementById("reqType").value = t;
     }
 </script>

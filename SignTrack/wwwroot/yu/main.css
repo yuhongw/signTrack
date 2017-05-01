@@ -1,0 +1,29 @@
+﻿body {
+
+}
+
+.signinLabel {
+    width: 20%;
+    display: block;
+}
+
+.signinInput {
+    width: 70%;
+    display: block;
+}
+
+.hundred {
+    width: 100%;
+}
+
+.header {
+    background-color: aliceblue;
+}
+
+.height10 {
+    height: 10px;
+}
+
+.height10 {
+    height: 5px;
+}

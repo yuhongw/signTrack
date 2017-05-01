@@ -1,0 +1,41 @@
+@model IEnumerable<DateTime>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <link href="~/yu/main.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="header">@ViewBag.stu.Name 缺席记录</div>
+    <div class="height10"></div>
+
+@if (Model.Count() > 0)
+{
+<table class="table">
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+}
+else
+{
+    <div>目前没有缺席记录。</div>
+}
+</body>
+</html>

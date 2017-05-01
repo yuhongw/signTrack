@@ -1,0 +1,31 @@
+@model IEnumerable<SignTrack.Models.SignIn>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>History</title>
+    <link href="~/yu/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">@ViewBag.stu.Name 签到历史</div>
+    <div class="height10"></div>
+<table class="table">
+    
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Sign.ToString("yyyy.MM.dd HH:mm:ss")
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
