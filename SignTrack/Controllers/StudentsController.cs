@@ -8,17 +8,22 @@ using Microsoft.EntityFrameworkCore;
 using SignTrack;
 using SignTrack.Models;
 using SignTrack.Services;
+using Microsoft.Extensions.Logging;
 
 namespace SignTrack.Controllers
 {
     public class StudentsController : Controller
     {
         private readonly SignContext _context;
+        
 
         public StudentsController(SignContext context)
         {
-            _context = context;    
+            _context = context;
+            //_logger = logger;
         }
+
+        
 
         // GET: Students
         public async Task<IActionResult> Index()
@@ -166,7 +171,6 @@ namespace SignTrack.Controllers
         {
             var query = StudentService.QGetByExample(_context, stu);
             Student stuQ = query.FirstOrDefault();
-
             
             if (stuQ != null)
             {

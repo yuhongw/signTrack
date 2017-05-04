@@ -22,9 +22,15 @@ import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity implements BeaconConsumer {
@@ -38,14 +44,17 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     public static final String FILTER_UUID = "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0";
 
     private BeaconManager beaconManager;
+    private DateTime lastFound;
     ActivityMainBinding b;
 
     final String ServURL = "http://125.222.244.19/yu/students/signin";
     final String CBeconId = "fda50693-a4e2-4fb1-afcf-c6eb07647825";
+
     @Override
     @JavascriptInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        lastFound = DateTime.now().plusHours(-1);
 
         this.b = DataBindingUtil.setContentView(this, com.ee.yu.signtrack.R.layout.activity_main);
         beaconManager = BeaconManager.getInstanceForApplication(this);
@@ -53,6 +62,20 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         beaconManager.bind(this);
 
         final WebView webV =b.web;
+
+        //设置定时器
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (lastFound.isBefore(DateTime.now().minusMinutes(5)))
+                {
+                    String cmd = "javascript:setBeacon('0000-0000')";
+                    b.web.loadUrl(cmd);
+                }
+            }
+        },1000,1000);
+
 
         webV.getSettings().setJavaScriptEnabled(true);
         webV.setWebViewClient(new WebViewClient(){
@@ -93,19 +116,19 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             @Override
             public void didEnterRegion(Region region)
             {
-                Log_e(TAG, "I just saw an beacon for the first time!");
+                Log_e(TAG, "发现Beacon");
             }
 
             @Override
             public void didExitRegion(Region region)
             {
-                Log_e(TAG, "I no longer see an beacon");
+                Log_e(TAG, "Beacon消失");
             }
 
             @Override
             public void didDetermineStateForRegion(int state, Region region)
             {
-                Log_e(TAG, "I have just switched from seeing/not seeing beacons: " + state);
+                Log_e(TAG, "发现Beacon状态:" + state);
             }
         });
 
@@ -115,11 +138,11 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 if (collection.size()>0)
                 {
                     Beacon beacon = collection.iterator().next();
-
                     DecimalFormat df = new DecimalFormat("0.000");
                     double dist = beacon.getDistance()*10;
                     Log_e(TAG,"1st:"+ df.format(dist)+" m.");
                     if (beacon.getId1().toString().equals(CBeconId)) {
+                        /*
                         if (dist > 0.1 && dist < 20) {
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -135,6 +158,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                                 }
                             });
                         }
+                        */
+                        lastFound = DateTime.now();
+                        String cmd = "javascript:setBeacon('" + CBeconId + "')";
+                        b.web.loadUrl(cmd);
                     }
 
                 }

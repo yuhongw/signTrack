@@ -18,14 +18,14 @@
         <div>
         <table class="hundred">
             <tr>
-                <td style="width:30px;"><img src="~/yu/images/userid.png" /></td>
+                <td style="width:50px;">学号</td>
                 <td><input asp-for="StuNo" /></td>
             </tr>
             <tr>
                 <td colspan="2"> <span asp-validation-for="StuNo"></span></td>
             </tr>
             <tr>
-                <td><img src="~/yu/images/pwd.png" /></td>
+                <td>姓名</td>
                 <td><input asp-for="Name"/></td>
             </tr>
             <tr>
@@ -44,12 +44,11 @@
         </div>
         <div class="height5"></div>
         <div>
-            <ul>
-                <li><input type="submit" value="确认签到" onclick="setReqType('confirm')"/></li>
-                <li><input type="submit" value="历史记录" onclick="setReqType('history')" /></li>
-                <li><input type="submit" value="缺席查询" onclick="setReqType('absence')" /></li>
-                <li><input type="button" value="测试" onclick="setPhone('112233')" /></li> 
-            </ul>
+            <div>
+                <input type="submit" value="确认签到" onclick="setReqType('confirm')"/>
+                <input type="submit" value="历史记录" onclick="setReqType('history')" />
+                <input type="submit" value="缺席查询" onclick="setReqType('absence')" />
+            </div>
             
         </div>
     </form>
